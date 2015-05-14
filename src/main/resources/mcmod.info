@@ -1,0 +1,16 @@
+[
+{
+  "modid": "CraftSender",
+  "name": "CraftSender",
+  "description": "Sends items between chests easily !",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/TheShark34/CraftSender/",
+  "updateUrl": "https://github.com/TheShark34/CraftSender/releases",
+  "authorList": ["TheShark34"],
+  "credits": "TheShark34 for the idea and the dev, and KrazyDimi for the idea, the logo and the CS Modem model and texture.",
+  "logoFile": "logo.jpg",
+  "screenshots": [],
+  "dependencies": []
+}
+]

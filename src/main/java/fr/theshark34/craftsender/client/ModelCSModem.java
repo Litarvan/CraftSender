@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 TheShark34
+ * Copyright 2015 TheShark34 & KrazyDimi
  *
  * This file is part of CraftSender.
  * CraftSender is free software: you can redistribute it and/or modify

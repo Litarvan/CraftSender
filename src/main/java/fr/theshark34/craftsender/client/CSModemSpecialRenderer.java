@@ -17,15 +17,10 @@
  */
 package fr.theshark34.craftsender.client;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -37,10 +32,25 @@ public class CSModemSpecialRenderer extends TileEntitySpecialRenderer {
         this.model = new ModelCSModem();
     }
 
-    Tessellator tes = Tessellator.instance;
-
     @Override
     public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
+        TileEntityCSModem modemTE = (TileEntityCSModem) te;
+        if(modemTE.getChest() == null)
+            switch(modemTE.getBlockMetadata()) {
+                case 0:
+                    modemTE.setChest((TileEntityChest) te.getWorldObj().getTileEntity(modemTE.xCoord - 1, modemTE.yCoord, modemTE.zCoord));
+                    break;
+                case 1:
+                    modemTE.setChest((TileEntityChest) te.getWorldObj().getTileEntity(modemTE.xCoord + 1, modemTE.yCoord, modemTE.zCoord));
+                    break;
+                case 2:
+                    modemTE.setChest((TileEntityChest) te.getWorldObj().getTileEntity(modemTE.xCoord, modemTE.yCoord, modemTE.zCoord - 1));
+                    break;
+                case 3:
+                    modemTE.setChest((TileEntityChest) te.getWorldObj().getTileEntity(modemTE.xCoord, modemTE.yCoord, modemTE.zCoord + 1));
+                    break;
+            }
+
         GL11.glPushMatrix(); {
             GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 

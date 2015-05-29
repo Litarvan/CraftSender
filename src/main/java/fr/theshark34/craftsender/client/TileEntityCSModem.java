@@ -19,18 +19,26 @@ package fr.theshark34.craftsender.client;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 
 public class TileEntityCSModem extends TileEntity {
 
     private int channel;
     private String name;
 
+    private TileEntityChest chest;
+
+    public TileEntityCSModem() {
+    }
+
     @Override
     public void writeToNBT(NBTTagCompound par1) {
         super.writeToNBT(par1);
 
         par1.setInteger("channel", channel);
-        par1.setString("name", name);
+
+        if(name != null && !name.equals(""))
+            par1.setString("name", name);
     }
 
     @Override
@@ -38,6 +46,7 @@ public class TileEntityCSModem extends TileEntity {
         super.readFromNBT(par1);
 
         channel = par1.getInteger("channel");
+
         name = par1.getString("name");
     }
 
@@ -49,12 +58,20 @@ public class TileEntityCSModem extends TileEntity {
         this.name = name;
     }
 
+    public void setChest(TileEntityChest chest) {
+        this.chest = chest;
+    }
+
     public int getChannel() {
         return this.channel;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public TileEntityChest getChest() {
+        return this.chest;
     }
 
 }

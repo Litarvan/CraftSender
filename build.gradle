@@ -21,6 +21,9 @@ version = "1.0-SNAPSHOT"
 group= "fr.theshark34.craftsender"
 archivesBaseName = "CraftSender"
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 minecraft {
     version = "1.7.10-10.13.2.1291"
     runDir = "run"

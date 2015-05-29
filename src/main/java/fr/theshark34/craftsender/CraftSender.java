@@ -24,6 +24,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import fr.theshark34.craftsender.common.CommonProxy;
+import net.minecraft.block.BlockSign;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -43,12 +44,11 @@ public class CraftSender {
 
     private Logger logger = LogManager.getLogger();
 
-    public static final BlockCSModem BLOCK_CS_MODEM = (BlockCSModem) new BlockCSModem(Material.rock).setBlockName("craftsender:cs_modem").setCreativeTab(CreativeTabs.tabRedstone);
+    public static final BlockCSModem BLOCK_CS_MODEM = (BlockCSModem) new BlockCSModem(Material.rock).setBlockName("craftsender:cs_modem").setCreativeTab(CreativeTabs.tabRedstone).setBlockTextureName("craftsender:cs_modem");
 
     @Mod.Instance("CraftSender")
     public static CraftSender instance;
 
-    // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide = "fr.theshark34.craftsender.client.ClientProxy", serverSide = "fr.theshark34.craftsender.common.CommonProxy")
     public static CommonProxy proxy;
 

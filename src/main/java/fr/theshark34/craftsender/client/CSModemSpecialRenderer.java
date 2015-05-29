@@ -17,7 +17,13 @@
  */
 package fr.theshark34.craftsender.client;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -31,12 +37,14 @@ public class CSModemSpecialRenderer extends TileEntitySpecialRenderer {
         this.model = new ModelCSModem();
     }
 
+    Tessellator tes = Tessellator.instance;
+
     @Override
     public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
         GL11.glPushMatrix(); {
             GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 
-            ResourceLocation textures = new ResourceLocation("CraftSender", "textures/model/cs_modem.png");
+            ResourceLocation textures = new ResourceLocation("craftsender", "textures/model/cs_modem.png");
             Minecraft.getMinecraft().renderEngine.bindTexture(textures);
 
             GL11.glPushMatrix(); {
@@ -51,10 +59,11 @@ public class CSModemSpecialRenderer extends TileEntitySpecialRenderer {
                         GL11.glRotatef(-90F, 0.0F, 1.0F, 0.0F);
                         break;
                     case 2:
-                        GL11.glRotatef(-180F, 0.0F, 1.0F, 0.0F);
+                        GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
                         break;
                 }
 
+                GL11.glTranslatef(0.0F, 0.0F, 0.20F);
                 this.model.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
             } GL11.glPopMatrix();
         } GL11.glPopMatrix();

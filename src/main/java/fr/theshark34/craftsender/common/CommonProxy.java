@@ -20,7 +20,6 @@ package fr.theshark34.craftsender.common;
 public class CommonProxy {
 
     public void registerRenders() {
-
     }
 
 }

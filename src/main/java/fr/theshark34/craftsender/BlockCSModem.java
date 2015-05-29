@@ -1,9 +1,14 @@
 package fr.theshark34.craftsender;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.theshark34.craftsender.client.GuiCSModem;
 import fr.theshark34.craftsender.client.TileEntityCSModem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
@@ -86,6 +91,12 @@ public class BlockCSModem extends Block {
             return false;
         } else
             return true;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
+        Minecraft.getMinecraft().displayGuiScreen(new GuiCSModem((TileEntityCSModem) world.getTileEntity(x, y, z)));
     }
 
     @Override
